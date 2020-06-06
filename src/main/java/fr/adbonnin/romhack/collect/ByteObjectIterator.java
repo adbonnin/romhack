@@ -5,22 +5,22 @@ import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
-public class ByteListIterator implements ByteIterator {
+public class ByteObjectIterator implements ByteIterator {
 
     private final Iterator<Byte> itr;
 
-    public ByteListIterator(Iterator<Byte> itr) {
+    public ByteObjectIterator(Iterator<Byte> itr) {
         this.itr = requireNonNull(itr);
-    }
-
-    @Override
-    public byte nextByte() {
-        return itr.next();
     }
 
     @Override
     public boolean hasNext() {
         return itr.hasNext();
+    }
+
+    @Override
+    public byte nextByte() {
+        return itr.next();
     }
 
     @Override
@@ -35,11 +35,11 @@ public class ByteListIterator implements ByteIterator {
             return true;
         }
 
-        if (!(obj instanceof ByteListIterator)) {
+        if (!(obj instanceof ByteObjectIterator)) {
             return false;
         }
 
-        final ByteListIterator that = (ByteListIterator) obj;
+        final ByteObjectIterator that = (ByteObjectIterator) obj;
         return Objects.equals(itr, that.itr);
     }
 
