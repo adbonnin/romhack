@@ -11,6 +11,11 @@ public class NumberUtils {
     }
 
     public static int numberOfDigits(int value, int base) {
+
+        if (value == 0) {
+            return 1;
+        }
+
         int count = 0;
 
         while (value != 0) {
