@@ -5,6 +5,16 @@ import spock.lang.Specification
 
 class BytesUtilsSpec extends Specification {
 
+    void "doit verifier que deux tableaux de bytes sont egaux"() {
+        expect:
+        BytesUtils.equalsBytes(left, leftPos, right, rightPos, length) == expectedEquals
+
+        where:
+        left                      | leftPos | right                     | rightPos | length || expectedEquals
+        [1, 2, 3] as byte[]       | 0       | [0, 0, 1, 2, 3] as byte[] | 2        | 3      || true
+        [0, 0, 1, 2, 3] as byte[] | 2       | [1, 2, 3] as byte[]       | 0        | 3      || true
+    }
+
     void "doit transformer une chaine hexa en bytes"() {
         expect:
         BytesUtils.hexToByte(hex) == expectedByte as byte

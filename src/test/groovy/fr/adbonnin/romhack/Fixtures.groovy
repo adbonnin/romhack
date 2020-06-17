@@ -2,7 +2,7 @@ package fr.adbonnin.romhack
 
 class Fixtures {
 
-    static newTestBuff(int size) {
+    static byte[] newTestBuff(int size) {
         def bytes = new byte[size]
 
         (0..<size).each { int value ->

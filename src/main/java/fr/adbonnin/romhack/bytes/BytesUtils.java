@@ -8,6 +8,17 @@ import java.util.List;
 
 public class BytesUtils {
 
+    public static boolean equalsBytes(byte[] left, int leftPos, byte[] right, int rightPos, int length) {
+
+        for (int i = 0; i < length; i++) {
+            if (left[leftPos + i] != right[rightPos + i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static byte hexToByte(String hex) {
         return (byte) NumberUtils.hexToInt(hex);
     }
