@@ -13,5 +13,5 @@ class Fixtures {
         return bytes
     }
 
-    private Fixtures() { /* Cannot be instantiated */}
+    private Fixtures() { /* Cannot be instantiated */ }
 }

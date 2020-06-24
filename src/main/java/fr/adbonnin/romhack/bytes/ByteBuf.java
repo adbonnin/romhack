@@ -1,6 +1,6 @@
 package fr.adbonnin.romhack.bytes;
 
-import fr.adbonnin.romhack.collect.ArraysUtils;
+import fr.adbonnin.romhack.collect.ArrayUtils;
 import fr.adbonnin.romhack.collect.ByteArrayIterator;
 import fr.adbonnin.romhack.collect.ByteIterable;
 import fr.adbonnin.romhack.collect.ByteIterator;
@@ -14,7 +14,7 @@ public class ByteBuf implements ByteIterable {
     private byte[] array;
 
     public ByteBuf() {
-        this(ArraysUtils.BUF_SIZE);
+        this(ArrayUtils.BUF_SIZE);
     }
 
     public ByteBuf(int initialCapacity) {
@@ -37,7 +37,7 @@ public class ByteBuf implements ByteIterable {
     public byte[] newArray(int off, int len) {
 
         if (len == 0) {
-            return ArraysUtils.EMPTY_BYTE_ARRAY;
+            return ArrayUtils.EMPTY_BYTE_ARRAY;
         }
 
         final byte[] copy = new byte[len];
