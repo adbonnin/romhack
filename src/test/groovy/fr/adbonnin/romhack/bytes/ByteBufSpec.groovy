@@ -48,13 +48,6 @@ class ByteBufSpec extends Specification {
         then:
         buf.newArray() == [1, 2, 3] as byte[]
         buf.newArray(1, 2) == [2, 3] as byte[]
-
-        when:
-        buf.write("456")
-
-        then:
-        buf.newArray() == [1, 2, 3, 52, 53, 54] as byte[]
-        new String(buf.newArray(3, 3)) == "456"
     }
 
     void "doit creer une copie du contenu du buffer"() {

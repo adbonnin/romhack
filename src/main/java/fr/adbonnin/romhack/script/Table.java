@@ -2,10 +2,7 @@ package fr.adbonnin.romhack.script;
 
 import fr.adbonnin.romhack.bytes.BytesFunction;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Table implements BytesFunction<Iterator<Token>> {
 
@@ -34,7 +31,28 @@ public class Table implements BytesFunction<Iterator<Token>> {
 
     @Override
     public Iterator<Token> apply(byte[] b, int off, int len) {
-        throw new UnsupportedOperationException();
+        return new Iterator<Token>() {
+
+            private final int end = off + len;
+            private int pos = off;
+
+            @Override
+            public boolean hasNext() {
+                return pos < end;
+            }
+
+            @Override
+            public Token next() {
+
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+
+                final Token token = decode(b, pos, end - pos);
+                pos = pos + token.getLen();
+                return token;
+            }
+        };
     }
 
     @Override

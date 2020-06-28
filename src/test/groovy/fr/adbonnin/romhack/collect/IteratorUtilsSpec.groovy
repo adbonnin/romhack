@@ -12,4 +12,12 @@ class IteratorUtilsSpec extends Specification {
         iterator             || expectedSize
         [1, 2, 3].iterator() || 3
     }
+
+    void "doit transformer un iterator en list"() {
+        expect:
+        IteratorUtils.toList(list.iterator()) == list
+
+        where:
+        list = [1, 2, 3]
+    }
 }

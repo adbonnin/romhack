@@ -63,10 +63,6 @@ public class ByteBuf implements ByteIterable {
         return new ByteArrayIterator(array, 0, size);
     }
 
-    public void write(String str) {
-        write(str.getBytes());
-    }
-
     public void write(byte[] b) {
         write(b, 0, b.length);
     }
