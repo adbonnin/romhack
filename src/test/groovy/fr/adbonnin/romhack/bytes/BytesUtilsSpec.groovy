@@ -28,6 +28,18 @@ class BytesUtilsSpec extends Specification {
         '5A' || 90
     }
 
+    void "doit transformer une chaine en tableau de bytes"() {
+        expect:
+        BytesUtils.toBytes(str) == expectedBytes
+
+        where:
+        str    || expectedBytes
+        "0A"   || [10] as byte[]
+        "A"    || [10] as byte[]
+        "0A0B" || [10, 11] as byte[]
+        "A0B"  || [10, 11] as byte[]
+    }
+
     void "doit mettre en forme des bytes"() {
         given:
         def bytes = Fixtures.newTestBuff(buffSize)

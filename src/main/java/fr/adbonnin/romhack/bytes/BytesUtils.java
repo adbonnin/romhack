@@ -1,5 +1,6 @@
 package fr.adbonnin.romhack.bytes;
 
+import fr.adbonnin.romhack.collect.ArrayUtils;
 import fr.adbonnin.romhack.utils.NumberUtils;
 
 import java.util.ArrayList;
@@ -21,6 +22,25 @@ public class BytesUtils {
 
     public static byte hexToByte(String hex) {
         return (byte) NumberUtils.hexToInt(hex);
+    }
+
+    public static byte[] toBytes(String value) {
+
+        final int len = value.length();
+        if (len == 0) {
+            return ArrayUtils.EMPTY_BYTE_ARRAY;
+        }
+
+        final int bytesLen = (len + 1) / 2;
+        final byte[] bytes = new byte[bytesLen];
+
+        for (int i = 1; i <= bytesLen; i++) {
+            final int pos = len - (i * 2);
+            final String str = value.substring(Math.max(0, pos), pos + 2);
+            bytes[bytesLen - i] = hexToByte(str);
+        }
+
+        return bytes;
     }
 
     public static String printBytes(byte[] bytes, int off, int len, int byteCount) {
